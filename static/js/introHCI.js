@@ -2,22 +2,31 @@
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	initializePage();
+  initializePage();
 })
 
 /*
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	$("#testjs").click(function(e) {
-		$('.jumbotron h1').text("Javascript is connected");
+  $("#testjs").click(function(e) {
+    $('.jumbotron h1').text("Javascript is connected");
     $('#testjs').text("YOLO");
     $(".jumbotron p").toggleClass("active");
-	});
+  });
 
-	// Add any additional listeners here
-	// example: $("#div-id").click(functionToCall);
+  // Add any additional listeners here
+  // example: $("#div-id").click(functionToCall);
   $("a.thumbnail").click(projectClick);
+
+  $("form#projectForm button#submitBtn").click(function(e) {
+    var project = $("#project").val();
+    var width = $("#width").val();
+    var description = $("#description").val();
+
+    $(project).animate({width: width}, 500);
+    $(project + ' .project-description').text(description);
+  });
 }
 
 function projectClick(e) {
